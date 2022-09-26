@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <a routerLink="/dashboard" class="navbar-brand">
+      <strong>Go to dashboard page</strong>
+      </a>
+   
+      
+      <a class="navbar-brand" href="#">office Section Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>      
+        <div class="d-flex">        
+          <button class="btn btn-success" type="submit"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add office</button>
+        </div>
+      </div>
+  </nav>
+  <div class="table">
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Office Id.</th>
+  
+          <th>Document Type</th>
+          <th>End Date</th>
+
+          <th></th>
+  
+          <th></th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let std of student; let i = index">
+          <!-- <th scope="row">{{ i + 1 }}</th> -->
+          <td>{{ std.officeId}}</td>
+          <td>{{ std.documentType}}</td>
+  
+          <td>{{ std.endDate}}</td>
+  
+          <td>
+            <input type="button" value="Edit" (click)="EditStudent(std)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success me-2"/>
+            <input type="button" value="Delete" (click)="DeleteStudent(std)" class="btn btn-danger"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <strong class="name">Office Section Form</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form class="row g-3" [formGroup]="studentForm">
+                    <div class="form-row">
+                      
+                    <div class="form-group col-md-8 mt-2">
+                      <label for="studentName">Document Type</label>
+                      <input type="text" class="form-control" formControlName="documentType" >
+                    </div>
+                    <div *ngIf="f.documentType.touched && f.documentType.invalid" class="alert alert-danger col-md-8 mt-2 "> 
+                      <div *ngIf="f.documentType.errors?.required">Document Type is required.</div>  
+                      <div *ngIf="f.documentType.errors?.pattern">Document Type should contain character only</div>  
+                  </div>
+                    <div class="form-group col-md-8 mt-2">
+                      <label for="mobileNo">End Date </label>
+                      <input type="date" class="form-control" formControlName="endDate">
+                    </div>
+                    <div *ngIf="f.endDate.touched && f.endDate.invalid " class="alert alert-danger col-md-8  "> 
+                      <span *ngIf="f.endDate.errors?.required"> Date  is required</span>   
+                      <!-- <span *ngIf="f.endDate.errors?.dateValidator"> {{studentForm.controls.endDate.errors?.msg}} </span>   -->
+                  </div>
+                    
+                    </div>
+                    </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning"  data-bs-dismiss="modal">Close</button>
+                <button *ngIf="btnSaveShow" type="button" class="btn btn-primary" (click)="AddStudent()" >Register</button>
+                <button *ngIf="btnUpdateShow" type="button" class="btn btn-primary" (click)="UpdateStudent()">Update</button>
+              </div>
+            </div>
+          </div>
+        </div>

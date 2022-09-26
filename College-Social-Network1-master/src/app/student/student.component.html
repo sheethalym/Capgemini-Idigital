@@ -1,0 +1,42 @@
+
+
+     <div class="button1">
+        <button class="btn btn-primary" (click)="home()">Go to Student Info</button>
+    </div>
+     <div class="form">
+     <form form [formGroup]="studentForm" (ngSubmit)="formSubmit()">
+        <div class="form-row">
+            <strong class="name">Student Form</strong>
+          <div class="form-group col-md-6">
+            <label for="studentName">Name</label>
+            <input type="text" class="form-control" formControlName="studentName" >
+          </div>
+          <span class="red"*ngIf="studentForm.controls['studentName'].invalid && studentForm.controls['studentName'].touched  "
+        >Name is required field</span>
+          <div class="form-group col-md-6">
+            <label for="mobileNo">Mobile</label>
+            <input type="number" class="form-control" formControlName="mobileNo">
+          </div>
+          <span class="red" *ngIf="studentForm.controls['mobileNo'].invalid && studentForm.controls['mobileNo'].touched  "
+        >MobileNo is required field</span>
+          <div class="form-group col-md-6">
+            <label for="branch">Branch</label>
+            <input type="text" class="form-control" formControlName="branch" >
+          </div>
+          <span class="red" *ngIf="studentForm.controls['branch'].invalid && studentForm.controls['branch'].touched  "
+        >Branch is required field</span>
+         <div class="form-group col-md-6">
+            <label for="year">Year</label>
+            <input type="number" class="form-control" formControlName="year" >
+          </div>
+          <span class="red" *ngIf="studentForm.controls['year'].invalid && studentForm.controls['year'].touched  "
+        >Year is required field</span>
+        
+        </div>
+        <br>
+        <div class="button">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        
+      </form>
+      </div>

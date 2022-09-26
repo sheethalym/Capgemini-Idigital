@@ -1,0 +1,36 @@
+
+ <div class="form">
+ <form form [formGroup]="updateForm" (ngSubmit)="formSubmit()">
+    <div class="form-row">
+        <strong class="name">Student Form</strong>
+      <div class="form-group col-md-6">
+        <label for="studentName">Name</label>
+        <input type="text" class="form-control" formControlName="studentName" >
+      </div>
+      
+      <div class="form-group col-md-6">
+        <label for="mobileNo">Mobile</label>
+        <input type="number" class="form-control" formControlName="mobileNo">
+      </div>
+     
+    <!-- <span *ngIf="studentForm.controls['mobileNo'].errors?.maxLength "
+    >Mobile No must be of 10 digit</span> -->
+      <div class="form-group col-md-6">
+        <label for="branch">Branch</label>
+        <input type="text" class="form-control" formControlName="branch" >
+      </div>
+     
+     <div class="form-group col-md-6">
+        <label for="year">Year</label>
+        <input type="number" class="form-control" formControlName="year" >
+      </div>
+      
+    
+    </div>
+    <br>
+    <div class="button">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+    
+  </form>
+  </div>

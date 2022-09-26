@@ -1,0 +1,39 @@
+{
+  "register": [
+    {
+      "userName": "admin",
+      "password": "admin",
+      "id": 1
+    }
+  ],
+  "student": [
+    {
+      "studentName": "satyam",
+      "year": 2022,
+      "mobileNo": 99887776655,
+      "branch": "eee",
+      "id": 1
+    },
+    {
+      "studentName": "satyam",
+      "year": 2022,
+      "mobileNo": 99887776655,
+      "branch": "eee",
+      "id": 2
+    },
+    {
+      "studentName": "satyam",
+      "year": 2022,
+      "mobileNo": 99887776655,
+      "branch": "eee",
+      "id": 3
+    },
+    {
+      "studentName": "satyam",
+      "year": 2022,
+      "mobileNo": 99887776655,
+      "branch": "eee",
+      "id": 4
+    }
+  ]
+}

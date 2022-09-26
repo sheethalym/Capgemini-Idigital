@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+    <a routerLink="/dashboard" class="navbar-brand">
+    <strong>Go to dashboard page</strong>
+    </a>
+ 
+    
+    <a class="navbar-brand" href="#">Student Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>      
+      <div class="d-flex">        
+        <button class="btn btn-success" type="submit"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add Student</button>
+      </div>
+    </div>
+</nav>
+<div class="table">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student Id.</th>
+
+        <th>Name</th>
+        <th>Mobile</th>
+
+        <th>Branch</th>
+
+        <th>Year</th>
+        <th></th>
+
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let std of student; let i = index">
+        <!-- <th scope="row">{{ i + 1 }}</th> -->
+        <td>{{ std.studentId}}</td>
+        <td>{{ std.studentName}}</td>
+
+        <td>{{ std.mobileNo}}</td>
+        <td>{{ std.branch }}</td>
+<td>{{ std.year}}</td>
+
+
+        <td>
+          <input type="button" value="Edit" (click)="EditStudent(std)" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success me-2"/>
+          <input type="button" value="Delete" (click)="DeleteStudent(std)" class="btn btn-danger"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <strong class="name">Student Form</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" [formGroup]="studentForm">
+                  <div class="form-row">
+                    
+                  <div class="form-group col-md-8 mt-2">
+                    <label for="studentName">Name</label>
+                    <input type="text" class="form-control" formControlName="studentName" >
+                  </div>
+                  <div *ngIf="f.studentName.touched && f.studentName.invalid" class="alert alert-danger col-md-8 mt-2 "> 
+                    <div *ngIf="f.studentName.errors?.required">Name is required.</div>  
+                    <div *ngIf="f.studentName.errors?.pattern">Name should contain character only</div>  
+                </div>
+                  <div class="form-group col-md-8 mt-2">
+                    <label for="mobileNo">Mobile</label>
+                    <input type="number" class="form-control" formControlName="mobileNo">
+                  </div>
+                  <div *ngIf="f.mobileNo.touched && f.mobileNo.invalid" class="alert alert-danger col-md-8 mt-2 ">  
+                    <div *ngIf="f.mobileNo.errors?.required">Mobile Number is required.</div>  
+                    <div *ngIf="f.mobileNo.errors?.pattern">Please, Enter 10 digit Mobile Number.</div>  
+                </div>
+                  <div class="form-group col-md-8 mt-2">
+                    <label for="branch">Branch</label>
+                    <input type="text" class="form-control" formControlName="branch" >
+                  </div>
+                  <span class="red" *ngIf="studentForm.controls['branch'].invalid && studentForm.controls['branch'].touched  "
+                >Branch is required field</span>
+                 <div class="form-group col-md-8 mt-2">
+                    <label for="year">Year</label>
+                    <input type="number" class="form-control" formControlName="year" >
+                  </div>
+                  <span class="red" *ngIf="studentForm.controls['year'].invalid && studentForm.controls['year'].touched  "
+                >Year is required field</span>
+                
+                </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning"  data-bs-dismiss="modal">Close</button>
+              <button *ngIf="btnSaveShow" type="button" class="btn btn-primary" (click)="AddStudent()" >Register</button>
+              <button *ngIf="btnUpdateShow" type="button" class="btn btn-primary" (click)="UpdateStudent()">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,37 @@
+.card{
+    height:220px;
+    width:400px;
+    margin:60px;
+    background-color:antiquewhite
+}
+.ml{
+margin-left: 300px;
+}
+.btn{
+    display: flex;
+    bottom:10px;
+    left:100px;
+    position: absolute;
+    justify-content: center;
+    width:50%;
+    border-radius: 20px;
+}
+.user{
+    display: flex;
+    margin-left: 120px;
+    justify-content: center;
+}
+.card-title{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 18px;
+    justify-content: center;
+    text-align: center;
+}
+.logout{
+    display: flex;
+    text-align: end;
+    justify-content: center;
+    margin-left: 1100px;
+    padding-top: 10px;
+}
